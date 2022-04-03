@@ -2,7 +2,8 @@ package com.example.springboot.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import javax.servlet.http.HttpServletRequest;
+
+import java.util.HashMap;
 import java.util.Map;
 
 @ResponseBody
@@ -11,9 +12,12 @@ import java.util.Map;
 public class TestController {
 
     @PostMapping("")
-    public String testAPI(@RequestBody Map<String,String> map)
+    public Map testAPI(@RequestBody Map<String,String> params)
     {
-        System.out.print(map);
-        return "";
+        Map<String, Object> map = new HashMap<>();
+        map.put("name", "name");
+        map.put("test", 123);
+        map.put("array", new String[]{"a", "b", "c"});
+        return map;
     }
 }
